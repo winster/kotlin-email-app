@@ -1,0 +1,54 @@
+server:
+  ssl:
+    enabled: true
+    key-store: classpath:keystore/notify.p12
+    key-store-password: <read_from_config_server>
+  port: 8082
+mail:
+  debug: true
+  retry:
+    maxAttempts: 3
+    delay: 1000
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5671
+    password: <read_from_config_server>
+    username: <read_from_config_server>
+    virtual-host: /
+    ssl:
+      enabled: true
+      trust-store: classpath:truststore/common-truststore.p12
+      trust-store-password: <read_from_config_server>
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://localhost:8443/auth/realms/ng/protocol/openid-connect/certs
+rabbitmq:
+  queueName: notify_queue
+management:
+  endpoint:
+    beans:
+      enabled: true
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    refresh:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: ["health","prometheus", "refresh"]
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  server.port: 8082
+opentracing:
+  jaeger:
+    log-spans: false
+    enabled: true

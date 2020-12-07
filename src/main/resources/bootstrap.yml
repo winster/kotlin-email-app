@@ -1,0 +1,27 @@
+spring:
+  application.name: notify
+  cloud:
+    config:
+      uri: https://localhost:8888
+      enabled: true
+      request-connect-timeout: 10000
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            token-uri: https://localhost:8443/auth/realms/ng/protocol/openid-connect/token
+        registration:
+          keycloak:
+            client-id: <read_from_env>
+            client-secret: <read_from_env>
+            authorization-grant-type: client_credentials
+ssl:
+  cloud-config:
+    enabled: true
+    truststore: classpath:truststore/common-truststore.p12
+    truststore-password: <read_from_env>
+  keycloak:
+    enabled: true
+    truststore: classpath:truststore/common-truststore.p12
+    truststore-password: <read_from_env>

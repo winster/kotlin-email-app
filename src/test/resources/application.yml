@@ -1,0 +1,25 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5671
+#  autoconfigure:
+#    exclude: org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+mail:
+  debug: true
+  retry:
+    maxAttempts: 5
+    delay: 500
+stubrunner:
+  ids: group-id:artifact-id:+:stubs
+  stubs-mode: remote
+  repositoryRoot: https://<nexus.repo.url>:8443/repository/repo
+  amqp:
+    enabled: true
+  stream:
+    enabled: false
+  integration:
+    enabled: false
+rabbitmq:
+  queueName: notify_queue
+  exchangeName: notify_exchange
+  routingKey: notify

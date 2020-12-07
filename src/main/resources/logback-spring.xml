@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProfile name="dev | default">
+        <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    </springProfile>
+    <springProfile name="test | qa | prod">
+        <appender name="jsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+                <includeMdcKeyName>traceId</includeMdcKeyName>
+                <includeMdcKeyName>spanId</includeMdcKeyName>
+                <includeMdcKeyName>sampled</includeMdcKeyName>
+            </encoder>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="jsonConsoleAppender"/>
+        </root>
+    </springProfile>
+</configuration>
