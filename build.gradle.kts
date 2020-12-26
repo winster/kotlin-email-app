@@ -42,7 +42,7 @@ dependencies {
   implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
   implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
   implementation("org.springframework.boot:spring-boot-starter-security")
-  implementation("io.github.hakky54:sslcontext-kickstart-for-netty:5.2.3")
+  implementation("io.github.hakky54:sslcontext-kickstart-for-netty:6.1.0")
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8")
   implementation("org.hibernate.validator:hibernate-validator")
   implementation("net.logstash.logback:logstash-logback-encoder:6.1")

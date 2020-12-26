@@ -2,7 +2,7 @@ package com.example.notify.config
 
 import com.example.notify.util.SSLFactoryUtil.Companion.createSSLFactory
 import io.netty.handler.ssl.SslContext
-import nl.altindag.sslcontext.util.NettySslContextUtils
+import nl.altindag.ssl.util.NettySslUtils
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -33,7 +33,7 @@ class WebClientConfig {
 
   private fun createSslContext(trustStore: Resource,
                                trustStorePassword: String): SslContext {
-    return NettySslContextUtils.forClient(
+    return NettySslUtils.forClient(
         createSSLFactory(
             null, null, trustStore,
             trustStorePassword))
